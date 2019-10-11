@@ -2,7 +2,7 @@ package lab1;
 
 import java.util.List;
 
-class Client {
+public class Client {
 
     String name;
     String numberPhone;
@@ -31,6 +31,14 @@ class Client {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", numberPhone='" + numberPhone + '\'' +
+                ", age=" + age +
+                '}';
     }
 
     public Client(String name, String numberPhone, int age) {
