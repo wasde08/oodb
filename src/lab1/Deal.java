@@ -6,13 +6,11 @@ class Deal {
 
     int id;
     Client client;
-    Seller seller;
     Product product;
 
-    public Deal(int id, Client client, Seller seller, Product product) {
+    public Deal(int id, Client client, Product product) {
         this.id = id;
         this.client = client;
-        this.seller = seller;
         this.product = product;
     }
     public int getId() {
@@ -28,14 +26,6 @@ class Deal {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
     }
 
     public Product getProduct() {
