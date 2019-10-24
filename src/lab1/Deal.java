@@ -2,7 +2,7 @@ package lab1;
 
 import java.util.List;
 
-class Deal {
+public class Deal {
 
     int id;
     Client client;

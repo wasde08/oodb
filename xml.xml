@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<seller>
+    <experience>3</experience>
+    <name>Almaz</name>
+    <numberPhone>332332232</numberPhone>
+    <products>
+        <product>
+            <id>1</id>
+            <description>swe</description>
+            <price>32</price>
+            <size>33</size>
+        </product>
+        <product>
+            <id>2</id>
+            <description>ssdffsddfe</description>
+            <price>3545</price>
+            <size>1</size>
+        </product>
+        <product>
+            <id>3</id>
+            <description>qwer</description>
+            <price>1</price>
+            <size>34</size>
+        </product>
+    </products>
+</seller>
