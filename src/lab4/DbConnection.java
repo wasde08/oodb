@@ -1,7 +1,6 @@
 package lab4;
 
 import com.google.gson.Gson;
-import lab3.entity.Product;
 
 import java.sql.*;
 import java.util.List;
@@ -22,7 +21,52 @@ public class DbConnection {
         return connection;
     }
 
-    public void saveInDb(List<Product> products){
+    public void saveInDbJSON(List<Product> products){
+        for (int i = 0; i <products.size() ; i++) {
+            Connection connection = getDBconnection();
+            PreparedStatement statement = null;
+            Gson gson = new Gson();
+            String json = gson.toJson(products.get(i));
+            //System.out.println(json);
+            try {
+                statement = connection.
+                        prepareStatement("insert into product (id,datajsonb) " +
+                                "values (?,cast( ? as json) );");
+                statement.setInt(1, products.get(i).getId());
+                statement.setObject(2, json);
+
+                long start = System.currentTimeMillis();
+                statement.executeUpdate();
+                long finish = System.currentTimeMillis();
+                long timeConsumedMillis = finish - start;
+                System.out.println(timeConsumedMillis+ " - time json");
+
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            int j = 3;
+            try {
+                statement = connection.
+                        prepareStatement("insert into product (id,datajson) " +
+                                "values (?,cast( ? as json) );");
+                statement.setInt(1, j);
+                statement.setObject(2, json);
+
+                long start = System.currentTimeMillis();
+                statement.executeUpdate();
+                long finish = System.currentTimeMillis();
+                long timeConsumedMillis = finish - start;
+                System.out.println(timeConsumedMillis+ " - time jsonb");
+
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+ /*   public void saveInDb(List<Product> products){
         for (int i = 0; i <products.size() ; i++) {
             Connection connection = getDBconnection();
             PreparedStatement statement = null;
@@ -38,12 +82,12 @@ public class DbConnection {
                 statement.setObject(3, json);
                 statement.executeUpdate();
                 statement.close();
-                //connection.commit();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
+    */
     public void fromDBJson(){
 
         String str;
@@ -57,6 +101,7 @@ public class DbConnection {
             long finish = System.currentTimeMillis();
             long timeConsumedMillis = finish - start;
             System.out.println(timeConsumedMillis+ " - time json");
+
             while (resultSet.next()) {
                 str = resultSet.getString("datajson");
                // System.out.println(str);
@@ -81,6 +126,7 @@ public class DbConnection {
             long finish = System.currentTimeMillis();
             long timeConsumedMillis = finish - start;
             System.out.println(timeConsumedMillis+ " - time jsonb");
+
             while (resultSet.next()) {
                 str = resultSet.getString("datajsonb");
                 //System.out.println(str);
