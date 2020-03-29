@@ -28,6 +28,7 @@ public class Seller {
     }
 
 
+
     public int getExperience() {
         return experience;
     }
