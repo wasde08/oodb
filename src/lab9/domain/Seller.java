@@ -20,7 +20,7 @@ public class Seller {
     }
 
     public String getName() {
-        System.out.println("");
+
         return name;
     }
 

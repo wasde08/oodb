@@ -1,6 +1,6 @@
 package lab7;
 
-import lab5.DbConnection;
+//import lab5.DbConnection;
 import lab7.annotation.Entity;
 import lab7.service.DbScan;
 import lab7.service.Init;
